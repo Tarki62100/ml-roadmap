@@ -1,0 +1,262 @@
+Below is an “ultra-granular” 8-week / 40-day curriculum.  
+• 5 weekdays per week ≈ 3 h/day (2 h core + 1 h stretch/optional).  
+• Weekends stay free for catch-up, repetition, or deeper dives.  
+• For every day you get four blocks:
+
+1 Theory (≈ 45 min) specific pages / videos / sections to study  
+2 Hands-on Core (≈ 60 min) must-do coding or math exercise  
+3 Stretch (≈ 30 min, optional) extra practice, paper, or podcast  
+4 Deliverable what to save in your Git repo / diary
+
+────────────────────────
+WEEK 1 Python & Math Foundations
+────────────────────────
+Day 1 Environment & Git
+ 1 Theory Read “Python Packaging” (§1.1-1.3) in *Hitchhiker’s Guide to Python* (15 pp)  
+ 2 Hands-on • Install Miniconda → `conda create -n ml python=3.11`  
+      • `pip install numpy pandas matplotlib scikit-learn jupyterlab black`  
+      • Initialise Git repo `ml-roadmap`; commit a blank `README.md`  
+ 3 Stretch Watch Real-Python “Python virtual envs in 12 min” video  
+ 4 Deliverable Screenshot: `conda env list` + first Git commit hash
+
+Day 2 NumPy Deep Dive
+ 1 Theory NumPy docs “Quick-start” §1-§5 (25 min read)  
+ 2 Hands-on Solve ex #1-30 of “100 NumPy Exercises” (use asserts)  
+ 3 Stretch Re-implement `np.mean` with pure loops & time it with `%timeit`  
+ 4 Deliverable Notebook `numpy_day2.ipynb` pushed to GitHub
+
+Day 3 Pandas Essentials
+ 1 Theory Read “10 Min to pandas” + DataSchool video #1 (“DataFrame Basics”, 15 min)  
+ 2 Hands-on Titanic CSV:  
+   • clean missing ages with median • create `FamilySize` feature  
+   • plot Age vs Survived stacked histogram  
+ 3 Stretch Try `df.pipe()` to chain cleaning steps  
+ 4 Deliverable PNG of histogram + cleaned CSV committed
+
+Day 4 Linear-Algebra Refresher
+ 1 Theory Khan Academy “Matrix multiplication” & “Dot product” (≈35 min)  
+ 2 Hands-on Write `matmul_loops(A,B)` then verify vs `np.matmul` (≤ 1e-6 tolerance)  
+ 3 Stretch Profiling: `%lprun` (line-profiler) to find bottleneck lines  
+ 4 Deliverable Markdown note comparing loop vs NumPy speed (≥ 20× faster)
+
+Day 5 Calculus & Gradients
+ 1 Theory 3Blue1Brown “The Essence of Calculus” episodes 1-3 (~30 min)  
+ 2 Hands-on With SymPy:  
+   • Symbolic derivative of \(f(x)=x^3+2x\sin x\)  
+   • Compute gradient of \(g(x,y)=3x^2y+y^3\)  
+   • Plot \(f(x)\) and tangent at \(x=2\) in Matplotlib  
+ 3 Stretch Numerically approximate derivative with central difference, compare error  
+ 4 Deliverable Notebook `gradients_day5.ipynb`
+
+────────────────────────
+WEEK 2 Probability, Statistics & Visualization
+────────────────────────
+Day 6 Probability Basics
+ 1 Theory Khan Academy “Basic probability” (Units 1-3) (~40 min)  
+ 2 Hands-on Write NumPy simulation: Monty Hall 10 000 trials → verify 2/3 win switch  
+ 3 Stretch Derive Bayes rule for spam filter (tiny 2×2 table) in Markdown  
+ 4 Deliverable Script `monty.py` + explanation
+
+Day 7 Descriptive Stats & seaborn
+ 1 Theory seaborn tutorial §Distributions (15 min)  
+ 2 Hands-on Iris dataset: compute mean/median/var per species; `sns.pairplot`  
+ 3 Stretch Create violin plot of petal length per species  
+ 4 Deliverable `iris_eda.pdf` (one-page)
+
+Day 8 Sampling & CLT
+ 1 Theory StatQuest “Central Limit Theorem” video (12 min) + blog post (5 min)  
+ 2 Hands-on Simulate 100 000 sample means of 6-sided die (sample size = 1,2,5,30); overlay KDEs  
+ 3 Stretch Kolmogorov–Smirnov test comparing n=30 mean distribution to Normal  
+ 4 Deliverable Figure with 4 curves + short commentary
+
+Day 9 Correlation vs Causation
+ 1 Theory Joel Grus *Data Sci from Scratch* Ch 6 (Correlation) (~20 pp)  
+ 2 Hands-on California housing: compute Pearson r of medianIncome vs medianHouseValue; plot reg line  
+ 3 Stretch Compute partial correlation controlling for latitude/longitude (use `pingouin`)  
+ 4 Deliverable Markdown “Why correlation ≠ causation” (≥ 150 words)
+
+Day 10 Viz Mini-Project
+ 1 Theory Read Tufte “Visual Display of Quantitative Information” excerpts (§1-§2)  
+ 2 Hands-on Pick any tabular Kaggle dataset; produce 5 distinct plot types (hist, heatmap, bar, scatter, box) in a Jupyter notebook  
+ 3 Stretch Add interactive Plotly version of one plot  
+ 4 Deliverable Export notebook to HTML and commit
+
+────────────────────────
+WEEK 3 Classical ML I
+────────────────────────
+Day 11 Train/Test & Metrics
+ 1 Theory scikit-learn “Model Evaluation” guide (Accuracy, Precision, Recall, ROC) (~30 min)  
+ 2 Hands-on Write utility `evaluate_clf(model, X, y)` returning dict of metrics  
+ 3 Stretch Implement ROC-AUC plotting function with thresholds annotation  
+ 4 Deliverable Python module `metrics.py` + unit test
+
+Day 12 Linear & Logistic from Scratch
+ 1 Theory Andrew Ng Coursera Week 2 videos (Cost, Gradient Descent) (~45 min)  
+ 2 Hands-on Implement batch GD linear regression in NumPy; verify convergence on synthetic data  
+ 3 Stretch Adapt code to logistic regression on simple binary dataset; plot decision boundary  
+ 4 Deliverable Notebook `lin_log_scratch.ipynb`
+
+Day 13 Pipelines & Regularisation
+ 1 Theory scikit-learn *User Guide* §1.1 (Pipeline & ColumnTransformer)  
+ 2 Hands-on California housing: Pipeline(StandardScaler, Ridge) vs (StandardScaler, Lasso); grid-search α  
+ 3 Stretch Plot coefficients path as α varies (use `sklearn.linear_model.lasso_path`)  
+ 4 Deliverable Plot + summary table of CV RMSE
+
+Day 14 k-NN & Decision Trees
+ 1 Theory StatQuest videos: “k-Nearest Neighbors” + “Decision Trees” (≈25 min total)  
+ 2 Hands-on Make moons dataset; compare k-NN (k = 3) vs DecisionTree (depth = 3) decision surface  
+ 3 Stretch Measure inference time difference for 10 000 test points  
+ 4 Deliverable PNG overlay of surfaces
+
+Day 15 Mini-Project #1 — Housing Prices
+ 1 Theory Kaggle “House Prices” competition overview page (~10 min)  
+ 2 Hands-on Pipeline with preprocessing, feature engineering, XGBoost; handle missing; log metrics  
+ 3 Stretch Try stacked ensemble (ElasticNet + XGB)  
+ 4 Deliverable Notebook + `requirements.txt`; top-5 Kaggle private-score screenshot
+
+────────────────────────
+WEEK 4 Classical ML II
+────────────────────────
+Day 16 Ensembles
+ Theory XGBoost “Algorithm” page (15 min)  
+ Hands-on RandomForest vs XGBoost on Titanic; plot feature importance (SHAP for XGB)  
+ Deliverable Bar plot + markdown commentary
+
+Day 17 Hyper-Param Search
+ Theory Optuna paper abstract (5 min) + Optuna quick-start (10 min)  
+ Hands-on RandomisedSearchCV vs Optuna on XGB; compare best AUC & wall-time  
+ Deliverable CSV of trials + plot of score vs iteration
+
+Day 18 Cross-Validation Schemes
+ Theory “Cross-validation strategies for time series” blog post (15 min)  
+ Hands-on Imbalanced churn dataset: StratifiedKFold vs GroupKFold (group=customerID)  
+ Deliverable Table of metrics
+
+Day 19 Feature Engineering
+ Theory FastAI Tabular lesson 1 video (20 min)  
+ Hands-on Implement TargetEncoding for categorical variable; add polynomial features; compare improvement  
+ Deliverable Notebook diff showing uplift
+
+Day 20 Kaggle Titanic Competition
+ Hands-on only Reach Top 20 % (public)  
+ Deliverable Screenshot + final code
+
+────────────────────────
+WEEK 5 Unsupervised & Explainability
+────────────────────────
+Day 21 Clustering
+ Theory k-means Math derivation article (10 min)  
+ Hands-on Mall Customers dataset: elbow plot, silhouette score; choose k  
+ Deliverable Cluster scatter plot colored by segment
+
+Day 22 Dimensionality Reduction
+ Theory Distill.pub “Visualizing Data Using t-SNE” (skim 15 min)  
+ Hands-on MNIST → PCA-50 → t-SNE-2; color by digit  
+ Deliverable High-res image + explanation
+
+Day 23 Anomaly Detection
+ Theory Isolation Forest paper (abstract + intro, 10 min)  
+ Hands-on Credit-card fraud dataset: IsolationForest vs LocalOutlierFactor; plot ROC  
+ Deliverable ROC curve & AUC numbers
+
+Day 24 Explainability with SHAP
+ Theory SHAP NIPS paper summary blog (12 min)  
+ Hands-on Run `shap.Explainer` on XGB model from Day 16; produce summary beeswarm  
+ Deliverable PNG + top-5 feature commentary
+
+Day 25 Mini-Project #2 — Customer Segmentation
+ Goal Combine clustering + PCA + SHAP narrative to deliver business insights  
+ Deliverable 2-page PDF report, infographic + conclusions
+
+────────────────────────
+WEEK 6 Neural Networks Basics
+────────────────────────
+Day 26 DL Concepts
+ Theory CS231n Lecture 1 (49 min)  
+ Hands-on Markdown mind-map covering perceptron → backprop → MLP  
+ Deliverable Mind-map PNG
+
+Day 27 PyTorch Tensors
+ Theory PyTorch “60 min blitz” §Tensors + Autograd (30 min)  
+ Hands-on Re-implement Day 12 linear regression in PyTorch; print gradient norms  
+ Deliverable Script `torch_reg.py`
+
+Day 28 MNIST MLP
+ Hands-on Build 2-layer MLP (784-128-64-10); achieve ≥ 96 % accuracy; log to TensorBoard  
+ Deliverable Screenshot of TensorBoard scalar chart
+
+Day 29 Regularisation & LR Scheduling
+ Theory Leslie Smith “cyclical learning rates” paper abstract (5 min)  
+ Hands-on Compare fixed LR, StepLR, OneCycleLR on MNIST; plot learning curves  
+ Deliverable Curve plot + table of final accuracy
+
+Day 30 Experiment Tracking
+ Hands-on Integrate wandb; sweep over hidden sizes; publish public wandb report  
+ Deliverable URL to wandb dashboard
+
+────────────────────────
+WEEK 7 Computer Vision & NLP
+────────────────────────
+Day 31 CNN Basics
+ Theory Stanford CS231n Lecture 4 (Convolutional Networks) (~30 min segment)  
+ Hands-on Implement 3-conv CNN on CIFAR-10 (target 70 %+ acc)  
+ Deliverable Confusion matrix image
+
+Day 32 Transfer Learning
+ Hands-on Fine-tune ResNet-18 on custom 10-class dataset (CalTech-256 subset)  
+ Stretch Freeze vs full-finetune experiment  
+ Deliverable Accuracy comparison table
+
+Day 33 NLP Pre-processing
+ Theory spaCy course “Tokenization” chapter (15 min)  
+ Hands-on IMDB reviews: tokenise, remove stop-words, create top-30 bi-grams bar chart  
+ Deliverable Notebook + bar chart
+
+Day 34 Transformers Fine-tune
+ Theory HuggingFace “Attention Is All You Need” summary blog (10 min)  
+ Hands-on Fine-tune distilBERT on IMDB sentiment; evaluate on test (≥ 90 %)  
+ Deliverable Classification report
+
+Day 35 Model Deployment
+ Hands-on FastAPI endpoint `/predict` + Dockerfile; push to Docker Hub (optional)  
+ Deliverable curl demo GIF or asciinema cast
+
+────────────────────────
+WEEK 8 MLOps, Ethics & Capstone
+────────────────────────
+Day 36 Versioning with DVC
+ Theory DVC “Get Started” docs (15 min)  
+ Hands-on Init DVC; track raw → processed data for capstone dataset  
+ Deliverable `.dvc` files committed
+
+Day 37 CI/CD Basics
+ Theory Read GitHub Actions “Getting started” (10 min)  
+ Hands-on Write simple `pytest` for data loader; GitHub Action to run tests on push  
+ Deliverable Passing badge in README
+
+Day 38 Monitoring & Drift
+ Theory EvidentlyAI “Why monitor ML models” blog (10 min)  
+ Hands-on Create Evidently report comparing training vs synthetic drift dataset  
+ Deliverable HTML report committed
+
+Day 39 Ethics & Fairness
+ Theory Google “Rules of ML” fairness chapter + IBM AI360 tutorial (skim 20 min)  
+ Hands-on Run fairness metrics (`statistical_parity_difference`) on your Day 34 model  
+ Deliverable Markdown note of metric + mitigation plan
+
+Day 40 Capstone Build & Publish
+ Hands-on (3+ h) Finish end-to-end pipeline: data → training → evaluation → API → CI/CD  
+ Stretch Record 5-min Loom video walkthrough  
+ Deliverable 1) Public GitHub repo 2) Blog post 3) Demo video link
+
+────────────────────────
+FINAL SUMMARY—WHAT YOU’LL HAVE
+────────────────────────
+• Robust dev environment (Conda, VS Code, Git).  
+• Strong grasp of Python numerics, pandas, probability, linear-algebra, calculus.  
+• Implementations of regression, trees, ensembles, clustering, PCA, t-SNE.  
+• Deep-learning foundations, CNN and Transformer fine-tuning skills.  
+• Engineering practices: pipelines, hyper-parameter tuning, experiment tracking, DVC, CI/CD, monitoring.  
+• Portfolio: 3 mini-projects + 1 capstone, Kaggle medal, wandb dashboard, demo API & Docker image, blog post.  
+
+Follow each daily deliverable, commit work publicly, and use weekends to reinforce weak spots. By Day 40 you’ll be confidently “knowledgeable” in machine learning and have a portfolio that demonstrates it. Good luck—consistency beats intensity!
