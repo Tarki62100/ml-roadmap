@@ -17,7 +17,5 @@ der_at_2r = sympy.lambdify(x,der_at_2)
 plt.plot(x_axis,der_at_2r(x_axis))
 plt.plot(x_axis,y)
 plt.legend(["Derivative at 2","Normal"])
-print(fr(2)-2*der_fr(2))
 plt.tight_layout()
 plt.show()
-#fr(2) = 2*der(2) - c
